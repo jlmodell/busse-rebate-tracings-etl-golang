@@ -88,12 +88,8 @@ func init() {
 		return
 	}
 
-	MONGODB_URI := os.Getenv("MONGODB_URI")
-
-	uri := MONGODB_URI
+	uri := os.Getenv("MONGODB_URI")
 	dbName := "busserebatetraces"
-
-	log.Println("Connecting to MongoDB...", uri)
 
 	ctx, cancel := context.WithTimeout(context.Background(), 3600*time.Second)
 	defer cancel()
