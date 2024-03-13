@@ -108,7 +108,7 @@ func (m *Mckesson) GetEmptyModel() interface{} {
 	return m
 }
 
-func (m *Mckesson) ToTracingWithEnrichment(fileDate time.Time, db *mongo.Database) Tracing {
+func (m *Mckesson) ToTracingWithEnrichment(fileDate time.Time, fileName string, db *mongo.Database) Tracing {
 	var tracing Tracing
 
 	tracing.Period = fmt.Sprintf("%s%s-MCKESSON_%s", strings.ToUpper(fileDate.Month().String()), strconv.Itoa(fileDate.Year()), fileDate.Format("20060102"))
@@ -145,6 +145,12 @@ func (m *Mckesson) ToTracingWithEnrichment(fileDate time.Time, db *mongo.Databas
 
 	tracing.SearchScore = 0.0
 	tracing.CheckLicense = false
+
+	tracing.FileDate = fileDate
+	tracing.FileName = fileName
+	_, month, _ := fileDate.Date()
+	tracing.PeriodMonth = fmt.Sprintf("%02d", month)
+	tracing.PeriodYear = strconv.Itoa(fileDate.Year())
 
 	fmt.Printf("Tracing: %+v\n", tracing)
 

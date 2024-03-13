@@ -27,6 +27,10 @@ type Tracing struct {
 	City         string    `bson:"city"`
 	State        string    `bson:"state"`
 	Postal       string    `bson:"postal"`
+	FileDate     time.Time `bson:"__date__"`
+	FileName     string    `bson:"__file__"`
+	PeriodMonth  string    `bson:"__month__"`
+	PeriodYear   string    `bson:"__year__"`
 }
 
 func (t *Tracing) GetKey() string {

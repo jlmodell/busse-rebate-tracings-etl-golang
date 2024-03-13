@@ -93,7 +93,7 @@ func (t *TriAnim) GetEmptyModel() interface{} {
 	return t
 }
 
-func (t *TriAnim) ToTracingWithEnrichment(fileDate time.Time, db *mongo.Database) Tracing {
+func (t *TriAnim) ToTracingWithEnrichment(fileDate time.Time, fileName string, db *mongo.Database) Tracing {
 	var tracing Tracing
 
 	tracing.Period = fmt.Sprintf("%s%s-TRIANIM_%s", strings.ToUpper(fileDate.Month().String()), strconv.Itoa(fileDate.Year()), fileDate.Format("20060102"))
@@ -130,6 +130,12 @@ func (t *TriAnim) ToTracingWithEnrichment(fileDate time.Time, db *mongo.Database
 
 	tracing.SearchScore = 0.0
 	tracing.CheckLicense = false
+
+	tracing.FileDate = fileDate
+	tracing.FileName = fileName
+	_, month, _ := fileDate.Date()
+	tracing.PeriodMonth = fmt.Sprintf("%02d", month)
+	tracing.PeriodYear = strconv.Itoa(fileDate.Year())
 
 	fmt.Printf("Tracing: %+v\n", tracing)
 

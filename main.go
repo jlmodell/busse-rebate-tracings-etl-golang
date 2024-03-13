@@ -22,6 +22,7 @@ var (
 	fp       string
 	Customer string
 	fileDate time.Time
+	fileName string
 )
 
 const customers = "atlantic, dealmed, trianim, tri-anim, henryschein, mckesson, mgm, twinmed, concordance, concordance_mms, mms"
@@ -82,6 +83,8 @@ func init() {
 	if fp == "" {
 		log.Fatal("No file path provided.")
 	}
+
+	fileName = strings.Split(fp, "/")[len(strings.Split(fp, "/"))-1]
 
 	if fileDate.IsZero() {
 		log.Println("No date provided.")
@@ -161,7 +164,7 @@ func main() {
 	// 	log.Fatal("Error reading CSV. -> ", err)
 	// }
 
-	// tracings := instance.EnhanceRecords(records, fileDate, Db)
+	// tracings := instance.EnhanceRecords(records, fileDate, fileName, Db)
 
 	// collection := Db.Collection("tracings")
 
@@ -186,7 +189,7 @@ func main() {
 			log.Fatal("Error reading CSV. -> ", err)
 		}
 
-		tracings := instance.EnhanceRecords(records, fileDate, Db)
+		tracings := instance.EnhanceRecords(records, fileDate, fileName, Db)
 
 		collection := Db.Collection("tracings")
 
@@ -208,7 +211,7 @@ func main() {
 			log.Fatal("Error reading CSV. -> ", err)
 		}
 
-		tracings := instance.EnhanceRecords(records, fileDate, Db)
+		tracings := instance.EnhanceRecords(records, fileDate, fileName, Db)
 
 		collection := Db.Collection("tracings")
 
@@ -230,7 +233,7 @@ func main() {
 			log.Fatal("Error reading CSV. -> ", err)
 		}
 
-		tracings := instance.EnhanceRecords(records, fileDate, Db)
+		tracings := instance.EnhanceRecords(records, fileDate, fileName, Db)
 
 		collection := Db.Collection("tracings")
 
@@ -252,7 +255,7 @@ func main() {
 			log.Fatal("Error reading CSV. -> ", err)
 		}
 
-		tracings := instance.EnhanceRecords(records, fileDate, Db)
+		tracings := instance.EnhanceRecords(records, fileDate, fileName, Db)
 
 		collection := Db.Collection("tracings")
 
@@ -275,7 +278,7 @@ func main() {
 			log.Fatal("Error reading CSV. -> ", err)
 		}
 
-		tracings := instance.EnhanceRecords(records, fileDate, Db)
+		tracings := instance.EnhanceRecords(records, fileDate, fileName, Db)
 
 		collection := Db.Collection("tracings")
 
@@ -297,7 +300,7 @@ func main() {
 			log.Fatal("Error reading CSV. -> ", err)
 		}
 
-		tracings := instance.EnhanceRecords(records, fileDate, Db)
+		tracings := instance.EnhanceRecords(records, fileDate, fileName, Db)
 
 		collection := Db.Collection("tracings")
 
@@ -319,7 +322,7 @@ func main() {
 			log.Fatal("Error reading CSV. -> ", err)
 		}
 
-		tracings := instance.EnhanceRecords(records, fileDate, Db)
+		tracings := instance.EnhanceRecords(records, fileDate, fileName, Db)
 
 		collection := Db.Collection("tracings")
 
@@ -341,7 +344,7 @@ func main() {
 			log.Fatal("Error reading CSV. -> ", err)
 		}
 
-		tracings := instance.EnhanceRecords(records, fileDate, Db)
+		tracings := instance.EnhanceRecords(records, fileDate, fileName, Db)
 
 		collection := Db.Collection("tracings")
 
@@ -363,7 +366,7 @@ func main() {
 			log.Fatal("Error reading CSV. -> ", err)
 		}
 
-		tracings := instance.EnhanceRecords(records, fileDate, Db)
+		tracings := instance.EnhanceRecords(records, fileDate, fileName, Db)
 
 		collection := Db.Collection("tracings")
 
@@ -385,7 +388,7 @@ func main() {
 			log.Fatal("Error reading CSV. -> ", err)
 		}
 
-		tracings := instance.EnhanceRecords(records, fileDate, Db)
+		tracings := instance.EnhanceRecords(records, fileDate, fileName, Db)
 
 		collection := Db.Collection("tracings")
 
@@ -407,7 +410,7 @@ func main() {
 			log.Fatal("Error reading CSV. -> ", err)
 		}
 
-		tracings := instance.EnhanceRecords(records, fileDate, Db)
+		tracings := instance.EnhanceRecords(records, fileDate, fileName, Db)
 
 		collection := Db.Collection("tracings")
 

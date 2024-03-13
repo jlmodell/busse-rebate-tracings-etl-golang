@@ -116,7 +116,7 @@ func (c *ConcordanceMMS) GetEmptyModel() interface{} {
 	return c
 }
 
-func (c *ConcordanceMMS) ToTracingWithEnrichment(fileDate time.Time, db *mongo.Database) Tracing {
+func (c *ConcordanceMMS) ToTracingWithEnrichment(fileDate time.Time, fileName string, db *mongo.Database) Tracing {
 	var tracing Tracing
 
 	tracing.Period = fmt.Sprintf("%s%s-CONCORDANCE_MMS_%s", strings.ToUpper(fileDate.Month().String()), strconv.Itoa(fileDate.Year()), fileDate.Format("20060102"))
@@ -152,6 +152,12 @@ func (c *ConcordanceMMS) ToTracingWithEnrichment(fileDate time.Time, db *mongo.D
 
 	tracing.SearchScore = 0.0
 	tracing.CheckLicense = false
+
+	tracing.FileDate = fileDate
+	tracing.FileName = fileName
+	_, month, _ := fileDate.Date()
+	tracing.PeriodMonth = fmt.Sprintf("%02d", month)
+	tracing.PeriodYear = strconv.Itoa(fileDate.Year())
 
 	fmt.Printf("Tracing: %+v\n", tracing)
 

@@ -131,7 +131,7 @@ func (h *Henryschein) GetEmptyModel() interface{} {
 	return h
 }
 
-func (h *Henryschein) ToTracingWithEnrichment(fileDate time.Time, db *mongo.Database) Tracing {
+func (h *Henryschein) ToTracingWithEnrichment(fileDate time.Time, fileName string, db *mongo.Database) Tracing {
 	var tracing Tracing
 
 	tracing.Period = fmt.Sprintf("%s%s-HENRYSCHEIN_%s", strings.ToUpper(fileDate.Month().String()), strconv.Itoa(fileDate.Year()), fileDate.Format("20060102"))
@@ -170,6 +170,12 @@ func (h *Henryschein) ToTracingWithEnrichment(fileDate time.Time, db *mongo.Data
 	tracing.CheckLicense = false
 
 	fmt.Printf("Tracing: %+v\n", tracing)
+
+	tracing.FileDate = fileDate
+	tracing.FileName = fileName
+	_, month, _ := fileDate.Date()
+	tracing.PeriodMonth = fmt.Sprintf("%02d", month)
+	tracing.PeriodYear = strconv.Itoa(fileDate.Year())
 
 	return tracing
 }
