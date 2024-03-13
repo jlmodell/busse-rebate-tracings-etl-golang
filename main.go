@@ -129,6 +129,59 @@ func main() {
 		csvFile = fp
 	}
 
+	// trying to clean up the switch statement
+
+	// var recordInstance interface{}
+
+	// switch Customer {
+	// case "dealmed":
+	// 	recordInstance := &models.Dealmed{}
+	// case "henryschein":
+	// 	recordInstance := &models.Henryschein{}
+	// case "trianim":
+	// 	recordInstance := &models.TriAnim{}
+	// case "tri-anim": // tri-anim is the same as trianim
+	// 	recordInstance := &models.TriAnim{}
+	// case "mckesson":
+	// 	recordInstance := &models.Mckesson{}
+	// case "mgm":
+	// 	recordInstance := &models.Mckesson{}
+	// case "twinmed":
+	// 	recordInstance := &models.Twinmed{}
+	// case "concordance":
+	// 	recordInstance := &models.Concordance{}
+	// case "concordance_mms":
+	// 	recordInstance := &models.ConcordanceMMS{}
+	// case "mms": // mms is the same as concordance_mms
+	// 	recordInstance := &models.ConcordanceMMS{}
+	// case "atlantic":
+	// 	recordInstance := &models.Atlantic{}
+	// default:
+	// 	log.Fatal("Invalid customer. Must be one of: ", customers)
+	// }
+
+	// records, err := instance.ReadCSVStruct(csvFile, recordInstance)
+	// if err != nil {
+	// 	log.Fatal("Error reading CSV. -> ", err)
+	// }
+
+	// tracings := instance.EnhanceRecords(records, fileDate, Db)
+
+	// collection := Db.Collection("tracings")
+
+	// key := tracings[0].GetKey()
+
+	// err = helpers.DeleteManyByKey(context.Background(), collection, "period", key)
+	// if err != nil {
+	// 	log.Fatal("Error deleting records. -> ", err)
+	// }
+
+	// err = helpers.InsertManyRecords(context.Background(), collection, tracings)
+	// if err != nil {
+	// 	log.Fatal("Error inserting records. -> ", err)
+	// }
+
+	// TODO: clean up switch statement
 	switch Customer {
 	case "dealmed":
 		recordInstance := &models.Dealmed{}
