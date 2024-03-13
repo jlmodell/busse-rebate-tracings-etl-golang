@@ -427,4 +427,6 @@ func main() {
 		}
 	}
 
+	// upload raw records to mongodb data warehouse
+	instance.UploadToMongoDBUsingPython(fileDate.Format("01"), fileDate.Format("2006"), fp)
 }

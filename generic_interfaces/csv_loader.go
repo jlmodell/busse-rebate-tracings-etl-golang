@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"os/exec"
 	"reflect"
 )
 
@@ -61,4 +62,26 @@ func ReadCSVStruct[T CSVLoader](fp string, prototype T) ([]T, error) {
 	}
 
 	return lines, nil
+}
+
+func UploadToMongoDBUsingPython(month, year, filepath string) {
+
+	// Command and arguments
+	cmd := "python"
+	args := []string{
+		"./bash_data_processing_temp/upload_to_data_warehouse.py",
+		fmt.Sprintf("--month='%s'", month),
+		fmt.Sprintf("--year='%s'", year),
+		fmt.Sprintf("--filepath='%s'", filepath),
+	}
+
+	// Execute the command
+	output, err := exec.Command(cmd, args...).CombinedOutput()
+	if err != nil {
+		fmt.Println("Error executing script:", err)
+		return
+	}
+
+	// Print the output from the command
+	fmt.Printf("Script output:\n%s\n", output)
 }
